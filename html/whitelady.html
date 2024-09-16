@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>dby's bar</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../css/main.css">
+<link rel="stylesheet" href="../css/minor.css">
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Karma", sans-serif}
+.w3-bar-block .w3-bar-item {padding:20px}
+</style>
+</head>
+<body>
+
+    <!-- Sidebar (hidden by default) -->
+    <nav class="w3-sidebar w3-bar-block w3-card w3-top w3-xlarge w3-animate-left" style="display:none;z-index:2;width:40%;min-width:300px" id="mySidebar">
+    <a href="../main.html" onclick="w3_close()" class="w3-bar-item w3-button">Home</a>
+    <a href="#food" onclick="w3_close()" class="w3-bar-item w3-button">Recipe</a>
+    <a href="#Cocktails" onclick="w3_close()" class="w3-bar-item w3-button">Cocktails</a>
+    </nav>
+
+    <!-- Top menu -->
+    <div class="w3-top">
+    <div class="w3-white w3-xlarge" style="max-width:1200px;margin:auto">
+        <div class="w3-button w3-padding-16 w3-left" id="menuBtn">☰</div>
+        <div class="w3-right w3-padding-16">Mail</div>
+        <div class="w3-center w3-padding-16">My Food</div>
+    </div>
+    </div>
+
+</br>
+</br>
+</br>
+</br>
+    <h1><b>White Lady</b></h1>
+    
+    <h2><b>Ingredients</b></h2>
+    <ul>
+        <li>Ice</li>
+        <li>45ml Gin</li>
+        <li>25ml Cointreau (or other orange liqueur)</li>
+        <li>0ml Fresh Lemon Juice</li>
+        <li>Optional: 1 Egg White (for a smooth texture)</li>
+    </ul>
+
+    <hr>
+
+
+    <div style="width: 100%; max-width: 1000px;">
+        <img src="../photo/white-lady.jpg" width="400" alt="White Lady" style="float: right; margin-left: 30px;" />
+        <h2><b>Steps</b></h2>
+        <ol>
+            <li>Add 45ml of gin to the shaker.</li>
+            <li>Add 25ml of Cointreau (or other orange liqueur).</li>
+            <li>Add 20ml of fresh lemon juice.</li>
+            <li>If using egg white, add it to the shaker for a smooth texture.</li>
+            <li>Add ice to the shaker and shake well for about 20 seconds.</li>
+            <li>Strain the mixture into a chilled cocktail glass.</li>
+            <li>Garnish with a lemon twist or a cherry (optional).</li>
+        </ol>
+    </div>
+    
+    <script>
+        // 打开侧边栏
+        function w3_open() {
+            document.getElementById("mySidebar").style.display = "block";
+        }
+        
+        // 关闭侧边栏
+        function w3_close() {
+            document.getElementById("mySidebar").style.display = "none";
+        }
+        
+        // 防止点击菜单按钮时触发关闭事件
+        document.getElementById('menuBtn').addEventListener('click', function(event) {
+            event.stopPropagation(); // 阻止点击传播，防止菜单关闭
+            w3_open(); // 打开菜单
+        });
+        
+        // 检测点击事件，点击空白区域时关闭侧边栏
+        document.addEventListener('click', function(event) {
+            var sidebar = document.getElementById("mySidebar");
+            var menuBtn = document.getElementById("menuBtn");
+            // 如果侧边栏是打开的，且点击不在侧边栏和菜单按钮内部，则关闭侧边栏
+            if (sidebar.style.display === "block" && !sidebar.contains(event.target) && !menuBtn.contains(event.target)) {
+            w3_close();
+            }
+        });
+        
+        // 防止点击菜单栏内部时关闭
+        document.getElementById("mySidebar").addEventListener('click', function(event) {
+            event.stopPropagation(); // 阻止点击传播，防止菜单栏内点击触发关闭
+        });
+    </script>
+
+</body>
+</html>
