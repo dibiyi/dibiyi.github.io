@@ -15,7 +15,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Karma", sans-serif}
 
     <!-- Sidebar (hidden by default) -->
     <nav class="w3-sidebar w3-bar-block w3-card w3-top w3-xlarge w3-animate-left" style="display:none;z-index:2;width:25%;min-width:200px" id="mySidebar">
-    <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button">☰</a>
+    <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button">☰</a>    
     <a href="../index.html" onclick="w3_close()" class="w3-bar-item w3-button">Home</a>
     <a href="../index.html#Recipe" onclick="w3_close()" class="w3-bar-item w3-button">Recipe</a>
     <a href="../index.html#Cocktails" onclick="w3_close()" class="w3-bar-item w3-button">Cocktails</a>
@@ -34,38 +34,35 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Karma", sans-serif}
 </br>
 </br>
 </br>
-    <div class="w3-main w3-content w3-padding">     
-        <h1><b>糖醋排骨，好吃得哭</b></h1>
+
+    <div class="w3-main w3-content w3-padding">  
+        <h1><b>Classic Martini</b></h1>
         
-        <h2><b>材料</b></h2>
+        <h2><b>Ingredients</b></h2>
         <ul>
-            <li>猪小排</li>
-            <li>料酒</li>
-            <li>盐</li>
-            <li>老抽、生抽</li>
-            <li>米醋</li>
-            <li>白糖</li>
-            <li>葱姜蒜</li>
-            <li>花椒、大料、干辣椒、香叶（根据喜好添加）</li>
+            <li>Ice</li>
+            <li>60ml Gin or Vodka</li>
+            <li>10ml Dry Vermouth</li>
+            <li>Optional: Olive or Lemon Twist for garnish</li>
         </ul>
     </div>
 
-    <hr/>
+    <hr>
 
-    <div class="w3-main w3-content w3-padding">  
-        <h2><b>做法</b></h2>
+
+    <div class="w3-main w3-content w3-padding" style="width: 100%; max-width: 1000px;">
+        <img src="../photo/classic-martini.jpg" width="400" alt="Classic Martini" style="float: right; margin-left: 30px;" />
+        <h2><b>Steps</b></h2>
         <ol>
-            <li>将猪小排用料酒、葱姜蒜焯水，去掉血沫（焯水后的汤可以留着炖肉，也可以重新烧水）。</li>
-            <li>加入炖肉调料（随心所欲），如花椒、大料、干辣椒、香叶、葱姜，加入盐，用高压锅炖10分钟。可以用焯水的水或重新烧水。（炖肉后的汤可以继续留着）。</li>
-            <li>锅中少放油，捞出排骨煎至金黄，加入花椒和干辣椒煸炒。</li>
-            <li>按1:2:4:4的比例加入料酒、酱油、米醋、白糖，再加水没过排骨（可使用前面保存的汤）。</li>
-            <li>大火收汁，加入盐调味，出锅前撒芝麻。</li>
+            <li>Fill a mixing glass with ice.</li>
+            <li>Add 60ml of gin or vodka to the glass.</li>
+            <li>Add 10ml of dry vermouth.</li>
+            <li>Stir gently for about 30 seconds.</li>
+            <li>Strain the mixture into a chilled martini glass.</li>
+            <li>Garnish with an olive or a lemon twist (optional).</li>
         </ol>
     </div>
-
-    <!--link and photo-->
-    <!--img src="../photo/tangcu-paigu.jpg"/-->
-
+    
     <script>
         // 打开侧边栏
         function w3_open() {
@@ -98,5 +95,6 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Karma", sans-serif}
             event.stopPropagation(); // 阻止点击传播，防止菜单栏内点击触发关闭
         });
     </script>
+
 </body>
 </html>
