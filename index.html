@@ -165,50 +165,58 @@ var scrollPositions = {
   'carouselWrapper2': 0
 };
 
-// 获取项目宽度，确保在窗口调整大小时宽度也是正确的
+// 初始化函数（可选）
+function initCarousel(wrapperId) {
+  const wrapper = document.getElementById(wrapperId);
+  scrollPositions[wrapperId] = 0;
+  wrapper.style.transform = `translateX(0px)`;
+}
+
+// 左滑动函数，将第一张图片移到最后一张
+function scrollLeft_own(wrapperId) {
+  const wrapper = document.getElementById(wrapperId);
+  const items = wrapper.querySelectorAll('.carousel-item');
+
+  // 将最后一张图片插入到第一张前面，实现类似循环效果
+  wrapper.insertBefore(items[items.length - 1], items[0]);
+
+  // 立即重置滑动位置，使其无缝衔接
+  wrapper.style.transition = "none";
+  wrapper.style.transform = `translateX(-${getItemWidth(wrapperId)}px)`;
+
+  // 然后再使用动画滑动到正确的位置
+  setTimeout(() => {
+    wrapper.style.transition = "transform 0.5s ease";
+    wrapper.style.transform = `translateX(0px)`;
+  }, 20); // 设置一个微小的延迟来触发动画效果
+}
+
+// 右滑动函数，将第一张图片移到最后一张
+function scrollRight_own(wrapperId) {
+  const wrapper = document.getElementById(wrapperId);
+  const items = wrapper.querySelectorAll('.carousel-item');
+
+  // 设置过渡动画
+  wrapper.style.transition = "transform 0.5s ease";
+  wrapper.style.transform = `translateX(-${getItemWidth(wrapperId)}px)`;
+
+  // 等到动画结束后，将第一张图片移到最后，实现无缝衔接
+  setTimeout(() => {
+    wrapper.appendChild(items[0]); // 将第一张图片移动到最后
+    wrapper.style.transition = "none"; // 取消动画过渡效果
+    wrapper.style.transform = `translateX(0px)`; // 重置滑动位置
+  }, 500); // 设置延迟与动画时间相同
+}
+
+// 获取每个项目的宽度
 function getItemWidth(wrapperId) {
   const wrapper = document.getElementById(wrapperId);
   return wrapper.querySelector('.carousel-item').offsetWidth;
 }
 
-// 左滑动函数
-function scrollLeft_own(wrapperId) {;
-  const wrapper = document.getElementById(wrapperId);
-  const itemWidth = getItemWidth(wrapperId); // 获取每个项目的宽度
-
-  // 减少当前的滚动位置
-  scrollPositions[wrapperId] -= itemWidth; // 每次左移一个项目的宽度
-
-  const maxScroll = wrapper.scrollWidth - wrapper.clientWidth;
-
-  // 如果超出边界则固定到0
-  if (scrollPositions[wrapperId] <= 0) {
-    scrollPositions[wrapperId] = maxScroll;
-  }
-
-  // 设置新的滑动位置
-  wrapper.style.transform = `translateX(-${scrollPositions[wrapperId]}px)`;
-}
-
-// 右滑动函数
-function scrollRight_own(wrapperId) {
-  const wrapper = document.getElementById(wrapperId);
-  const itemWidth = getItemWidth(wrapperId); // 获取每个项目的宽度
-
-  // 最大可滚动距离
-  const maxScroll = wrapper.scrollWidth - wrapper.clientWidth;
-
-  // 增加当前的滚动位置
-  scrollPositions[wrapperId] += itemWidth; // 每次右移一个项目的宽度
-
-  // 如果超出最大滚动距离，则固定到最大距离
-  if (scrollPositions[wrapperId] > maxScroll) {
-    scrollPositions[wrapperId] = 0;
-  }
-
-  // 设置新的滑动位置
-  wrapper.style.transform = `translateX(-${scrollPositions[wrapperId]}px)`;
-}
+// 初始化轮播（如果需要）
+initCarousel('carouselWrapper1');
+initCarousel('carouselWrapper2');
 
 // 打开侧边栏
 function w3_open() {
