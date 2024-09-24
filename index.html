@@ -28,6 +28,55 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Karma", sans-serif}
 .right {
   margin-left: auto; /* 让 Read more 靠右 */
 }
+
+/* Carousel 样式 */
+.carousel-container {
+  display: flex;
+  position: relative; /* 使按钮可以相对容器进行定位 */
+  overflow: hidden; /* 限制显示区域，超出部分隐藏 */
+  align-items: center; /* 垂直居中 */
+}
+
+.carousel-wrapper {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  will-change: transform;
+}
+
+.carousel-item {
+  flex: 0 0 25%; /* 每个项目占 25% 宽度 */
+  box-sizing: border-box;
+  padding: 10px;
+}
+
+/* 按钮样式 */
+.carousel-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%); /* 垂直居中 */
+  background-color: rgba(0, 0, 0, 0.5); /* 半透明背景 */
+  color: white;
+  border: none;
+  font-size: 24px;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 2;
+}
+
+/* 左边按钮靠左 */
+.carousel-button.left {
+  left: 0;
+}
+
+/* 右边按钮靠右 */
+.carousel-button.right {
+  right: 0;
+}
+
+/* 鼠标悬停时的效果 */
+.carousel-button:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
 </style>
 </head>
 <body>
@@ -48,107 +97,216 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Karma", sans-serif}
   </div>
 </div>
 
-
-  
 <!-- !PAGE CONTENT! -->
 <hr id="food">
 <div class="w3-main w3-content w3-padding w3-center" style="max-width:1200px;margin-top:100px">
 
-
 <hr id="Recipe">
-  <!-- First Photo Grid-->
-  <div  class="w3-row-padding w3-padding-16">
-    
-    <div class="container">
-      <div class="center"><h3>Recipe</h3><br></div>
-      <div class="right"><a href="Recipe.html" class="readmore">Read more</a></div>
-    </div>
-    <div class="w3-quarter">
+<!-- First Photo Grid with sliding functionality -->
+
+<div class="container">
+  <div class="center"><h3>Recipe</h3></div>
+  <div class="right"><a href="Recipe.html">Read more</a></div>
+</div>
+
+<div class="carousel-container">
+  <!-- 左边的按钮 -->
+
+  <button class="carousel-button left" onclick="scrollLeft_own('carouselWrapper1')">❮</button>
+
+  <div class="carousel-wrapper" id="carouselWrapper1">
+    <div class="carousel-item">
       <img src="photo/luobo.jpeg" alt="white-lady" style="width:100%; aspect-ratio: 1 / 1;">
       <a href="html/luobodunniurou.html" class="dby-link"><h3>萝卜炖牛腩</h3></a>
       <p>Just some random text, lorem ipsum text praesent tincidunt ipsum lipsum.</p>
     </div>
-    <div class="w3-quarter">
+    <div class="carousel-item">
       <img src="photo/dapanji.jpg" alt="white-lady" style="width:100%; aspect-ratio: 1 / 1;">
       <a href="html/dapanji.html" class="dby-link"><h3>大盘鸡</h3></a>
       <p>Just some random text, lorem ipsum text praesent tincidunt ipsum lipsum.</p>
     </div>
-    <div class="w3-quarter">
+    <div class="carousel-item">
       <img src="photo/tangcu.jpg" alt="white-lady" style="width:100%; aspect-ratio: 1 / 1;">
       <a href="html/tangcupaigu.html" class="dby-link"><h3>糖醋排骨</h3></a>
       <p>Just some random text, lorem ipsum text praesent tincidunt ipsum lipsum.</p>
     </div>
-    <div class="w3-quarter">
+    <div class="carousel-item">
+      <img src="photo/ganguoji.jpg" alt="white-lady" style="width:100%; aspect-ratio: 1 / 1;">
+      <a href="html/ganguoji.html" class="dby-link"><h3>干锅鸡</h3></a>
+      <p>Just some random text, lorem ipsum text praesent tincidunt ipsum lipsum.</p>
+    </div>
+
+    <div class="carousel-item">
+      <img src="photo/luobo.jpeg" alt="white-lady" style="width:100%; aspect-ratio: 1 / 1;">
+      <a href="html/luobodunniurou.html" class="dby-link"><h3>萝卜炖牛腩</h3></a>
+      <p>Just some random text, lorem ipsum text praesent tincidunt ipsum lipsum.</p>
+    </div>
+    <div class="carousel-item">
+      <img src="photo/dapanji.jpg" alt="white-lady" style="width:100%; aspect-ratio: 1 / 1;">
+      <a href="html/dapanji.html" class="dby-link"><h3>大盘鸡</h3></a>
+      <p>Just some random text, lorem ipsum text praesent tincidunt ipsum lipsum.</p>
+    </div>
+    <div class="carousel-item">
+      <img src="photo/tangcu.jpg" alt="white-lady" style="width:100%; aspect-ratio: 1 / 1;">
+      <a href="html/tangcupaigu.html" class="dby-link"><h3>糖醋排骨</h3></a>
+      <p>Just some random text, lorem ipsum text praesent tincidunt ipsum lipsum.</p>
+    </div>
+    <div class="carousel-item">
       <img src="photo/ganguoji.jpg" alt="white-lady" style="width:100%; aspect-ratio: 1 / 1;">
       <a href="html/ganguoji.html" class="dby-link"><h3>干锅鸡</h3></a>
       <p>Just some random text, lorem ipsum text praesent tincidunt ipsum lipsum.</p>
     </div>
   </div>
-  
 
-  
-  <hr id="Cocktails">
+  <!-- 右边的按钮 -->
+  <button class="carousel-button right" onclick="scrollRight_own('carouselWrapper1')">❯</button>
+</div>
 
-    <!-- Second Photo Grid-->
-  <div class="w3-row-padding w3-padding-16 w3-center">
-    <div class="container">
-      <div class="center"><h3>Cocktails</h3><br></div>
-      <div class="right"><a href="Cocktails.html" class="readmore">Read more</a></div>
-    </div>
-    <div class="w3-quarter">
+<hr id="Cocktails">
+
+<div class="container">
+  <div class="center"><h3>Cocktails</h3></div>
+  <div class="right"><a href="Cocktails.html">Read more</a></div>
+</div>
+
+<!-- Second Photo Grid with sliding functionality -->
+<div class="carousel-container">
+  <!-- 左边的按钮 -->
+  <button class="carousel-button left" onclick="scrollLeft_own('carouselWrapper2')">❮</button>
+
+  <div class="carousel-wrapper" id="carouselWrapper2">
+    <div class="carousel-item">
       <img src="photo/white-lady.jpg" alt="White Lady" style="width:100%; aspect-ratio: 1 / 1;">
       <a href="html/whitelady.html" class="dby-link"><h3>White lady</h3></a>
       <p>Just some random text, lorem ipsum text praesent tincidunt ipsum lipsum.</p>
     </div>
-    <div class="w3-quarter">
+    <div class="carousel-item">
       <img src="photo/gintonic.jpg" alt="Gin Tonic" style="width:100%; aspect-ratio: 1 / 1;">
       <a href="html/Gintonic.html" class="dby-link"><h3>Gin Tonic</h3></a>
       <p>Just some random text, lorem ipsum text praesent tincidunt ipsum lipsum.</p>
-    </div>  
-    <div class="w3-quarter">
+    </div>
+    <div class="carousel-item">
       <img src="photo/classic-martini.jpg" alt="Classic Martini" style="width:100%; aspect-ratio: 1 / 1;">
       <a href="html/classicmartini.html" class="dby-link"><h3>Classic Martini</h3></a>
       <p>Just some random text, lorem ipsum text praesent tincidunt ipsum lipsum.</p>
     </div>
-    <div class="w3-quarter">
+    <div class="carousel-item">
       <img src="photo/manhattan.jpg" alt="Manhattan" style="width:100%; aspect-ratio: 1 / 1;">
       <a href="html/manhattan.html" class="dby-link"><h3>Manhattan</h3></a>
+      <p>Just some random text, lorem ipsum text praesent tincidunt ipsum lipsum。</p>
+    </div>
+
+    <div class="carousel-item">
+      <img src="photo/white-lady.jpg" alt="White Lady" style="width:100%; aspect-ratio: 1 / 1;">
+      <a href="html/whitelady.html" class="dby-link"><h3>White lady</h3></a>
       <p>Just some random text, lorem ipsum text praesent tincidunt ipsum lipsum.</p>
-    </div>   
+    </div>
+    <div class="carousel-item">
+      <img src="photo/gintonic.jpg" alt="Gin Tonic" style="width:100%; aspect-ratio: 1 / 1;">
+      <a href="html/Gintonic.html" class="dby-link"><h3>Gin Tonic</h3></a>
+      <p>Just some random text, lorem ipsum text praesent tincidunt ipsum lipsum.</p>
+    </div>
+    <div class="carousel-item">
+      <img src="photo/classic-martini.jpg" alt="Classic Martini" style="width:100%; aspect-ratio: 1 / 1;">
+      <a href="html/classicmartini.html" class="dby-link"><h3>Classic Martini</h3></a>
+      <p>Just some random text, lorem ipsum text praesent tincidunt ipsum lipsum.</p>
+    </div>
+    <div class="carousel-item">
+      <img src="photo/manhattan.jpg" alt="Manhattan" style="width:100%; aspect-ratio: 1 / 1;">
+      <a href="html/manhattan.html" class="dby-link"><h3>Manhattan</h3></a>
+      <p>Just some random text, lorem ipsum text praesent tincidunt ipsum lipsum。</p>
+    </div>
   </div>
+
+  <!-- 右边的按钮 -->
+  <button class="carousel-button right" onclick="scrollRight_own('carouselWrapper2')">❯</button>
+</div>
 
 </div>
 
+
+
 <script>
-  // 打开侧边栏
-  function w3_open() {
-    document.getElementById("mySidebar").style.display = "block";
+// 用于存储每个轮播的当前滚动位置
+var scrollPositions = {
+  'carouselWrapper1': 0,
+  'carouselWrapper2': 0
+};
+
+// 获取项目宽度，确保在窗口调整大小时宽度也是正确的
+function getItemWidth(wrapperId) {
+  const wrapper = document.getElementById(wrapperId);
+  return wrapper.querySelector('.carousel-item').offsetWidth;
+}
+
+// 左滑动函数
+function scrollLeft_own(wrapperId) {;
+  const wrapper = document.getElementById(wrapperId);
+  const itemWidth = getItemWidth(wrapperId); // 获取每个项目的宽度
+
+  // 减少当前的滚动位置
+  scrollPositions[wrapperId] -= itemWidth; // 每次左移一个项目的宽度
+
+  const maxScroll = wrapper.scrollWidth - wrapper.clientWidth;
+
+  // 如果超出边界则固定到0
+  if (scrollPositions[wrapperId] <= 0) {
+    scrollPositions[wrapperId] = maxScroll;
   }
-  
-  // 关闭侧边栏
-  function w3_close() {
-    document.getElementById("mySidebar").style.display = "none";
+
+  // 设置新的滑动位置
+  wrapper.style.transform = `translateX(-${scrollPositions[wrapperId]}px)`;
+}
+
+// 右滑动函数
+function scrollRight_own(wrapperId) {
+  const wrapper = document.getElementById(wrapperId);
+  const itemWidth = getItemWidth(wrapperId); // 获取每个项目的宽度
+
+  // 最大可滚动距离
+  const maxScroll = wrapper.scrollWidth - wrapper.clientWidth;
+
+  // 增加当前的滚动位置
+  scrollPositions[wrapperId] += itemWidth; // 每次右移一个项目的宽度
+
+  // 如果超出最大滚动距离，则固定到最大距离
+  if (scrollPositions[wrapperId] > maxScroll) {
+    scrollPositions[wrapperId] = 0;
   }
-  
- // 防止点击菜单按钮时触发关闭事件
+
+  // 设置新的滑动位置
+  wrapper.style.transform = `translateX(-${scrollPositions[wrapperId]}px)`;
+}
+
+// 打开侧边栏
+function w3_open() {
+  document.getElementById("mySidebar").style.display = "block";
+}
+
+// 关闭侧边栏
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+}
+
+// 防止点击菜单按钮时触发关闭事件
 document.getElementById('menuBtn').addEventListener('click', function(event) {
-    event.stopPropagation(); // 阻止点击传播，防止菜单关闭
-    w3_open(); // 打开菜单
+  event.stopPropagation(); // 阻止点击传播，防止菜单关闭
+  w3_open(); // 打开菜单
 });
 
 // 检测点击事件，点击空白区域时关闭侧边栏
 document.addEventListener('click', function(event) {
-    var sidebar = document.getElementById("mySidebar");
-    var menuBtn = document.getElementById("menuBtn");
-    // 如果侧边栏是打开的，且点击不在侧边栏和菜单按钮内部，则关闭侧边栏
-    if (sidebar.style.display === "block" && !sidebar.contains(event.target) && !menuBtn.contains(event.target)) {
-      w3_close();
-    }
+  var sidebar = document.getElementById("mySidebar");
+  var menuBtn = document.getElementById("menuBtn");
+  // 如果侧边栏是打开的，且点击不在侧边栏和菜单按钮内部，则关闭侧边栏
+  if (sidebar.style.display === "block" && !sidebar.contains(event.target) && !menuBtn.contains(event.target)) {
+    w3_close();
+  }
 });
 
 // 防止点击菜单栏内部时关闭
 document.getElementById("mySidebar").addEventListener('click', function(event) {
-    event.stopPropagation(); // 阻止点击传播，防止菜单栏内点击触发关闭
+  event.stopPropagation(); // 阻止点击传播，防止菜单栏内点击触发关闭
 });
 </script>
 
