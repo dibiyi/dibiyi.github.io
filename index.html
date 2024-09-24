@@ -32,6 +32,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Karma", sans-serif}
 /* Carousel 样式 */
 .carousel-container {
   display: flex;
+  width:100%;
   position: relative; /* 使按钮可以相对容器进行定位 */
   overflow: hidden; /* 限制显示区域，超出部分隐藏 */
   align-items: center; /* 垂直居中 */
@@ -39,14 +40,23 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Karma", sans-serif}
 
 .carousel-wrapper {
   display: flex;
+  width: 100%;
   transition: transform 0.5s ease-in-out;
   will-change: transform;
 }
 
 .carousel-item {
-  flex: 0 0 25%; /* 每个项目占 25% 宽度 */
+  max-width: 100%;
+  flex: 0 0 100%; /* 每个项目占 25% 宽度 */
   box-sizing: border-box;
   padding: 10px;
+  object-fit: contain;
+}
+
+/* 确保图片能够适应其父容器 */
+.carousel-item img {
+  max-width: 100%;  /* 图片占满父容器 */
+  display: block;
 }
 
 /* 按钮样式 */
@@ -85,14 +95,14 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Karma", sans-serif}
 }
 
 /* 中等屏设备，每次显示 2 张 */
-@media (min-width: 768px) and (max-width: 1023px) {
+@media (min-width: 768px) and (max-width: 1024px) {
   .carousel-item {
     flex: 0 0 50%; /* 每张图片占 50% 的宽度 */
   }
 }
 
 /* 小屏设备，每次显示 1 张 */
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   .carousel-item {
     flex: 0 0 100%; /* 每张图片占 100% 的宽度 */
   }
@@ -129,7 +139,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Karma", sans-serif}
   <div class="right"><a href="Recipe.html">Read more</a></div>
 </div>
 
-<div class="carousel-container">
+<div class="container carousel-container">
   <!-- 左边的按钮 -->
 
   <button class="carousel-button left" onclick="scrollLeft_own('carouselWrapper1')">❮</button>
@@ -190,7 +200,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Karma", sans-serif}
 </div>
 
 <!-- Second Photo Grid with sliding functionality -->
-<div class="carousel-container">
+<div class="container carousel-container">
   <!-- 左边的按钮 -->
   <button class="carousel-button left" onclick="scrollLeft_own('carouselWrapper2')">❮</button>
 
