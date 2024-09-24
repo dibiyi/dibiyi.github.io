@@ -44,3 +44,102 @@ a{
 .readmore:hover{
   color:pink
 }
+
+.container {
+  display: flex;
+  justify-content: space-between; /* 两边分散对齐 */
+  align-items: center; /* 垂直方向上居中对齐 */
+  position: relative;
+  padding: 10px 0; /* 控制上下的空白 */
+}
+
+/* Recipe 的样式 */
+.center {
+position: absolute;
+left: 50%;
+transform: translateX(-50%);
+}
+
+/* Read more 靠右对齐 */
+.right {
+margin-left: auto; /* 让 Read more 靠右 */
+}
+
+/* Carousel 样式 */
+.carousel-container {
+display: flex;
+width:100%;
+position: relative; /* 使按钮可以相对容器进行定位 */
+overflow: hidden; /* 限制显示区域，超出部分隐藏 */
+align-items: center; /* 垂直居中 */
+}
+
+.carousel-wrapper {
+display: flex;
+width: 100%;
+transition: transform 0.5s ease-in-out;
+will-change: transform;
+}
+
+.carousel-item {
+max-width: 100%;
+flex: 0 0 100%; /* 每个项目占 25% 宽度 */
+box-sizing: border-box;
+padding: 10px;
+object-fit: contain;
+}
+
+/* 确保图片能够适应其父容器 */
+.carousel-item img {
+max-width: 100%;  /* 图片占满父容器 */
+display: block;
+}
+
+/* 按钮样式 */
+.carousel-button {
+position: absolute;
+top: 50%;
+transform: translateY(-50%); /* 垂直居中 */
+background-color: rgba(0, 0, 0, 0.5); /* 半透明背景 */
+color: white;
+border: none;
+font-size: 24px;
+padding: 10px;
+cursor: pointer;
+z-index: 2;
+}
+
+/* 左边按钮靠左 */
+.carousel-button.left {
+left: 0;
+}
+
+/* 右边按钮靠右 */
+.carousel-button.right {
+right: 0;
+}
+
+/* 鼠标悬停时的效果 */
+.carousel-button:hover {
+background-color: rgba(0, 0, 0, 0.8);
+}
+
+@media (min-width: 1024px) {
+.carousel-item {
+flex: 0 0 25%; /* 每张图片占 25% 的宽度 */
+}
+}
+
+/* 中等屏设备，每次显示 2 张 */
+@media (min-width: 768px) and (max-width: 1024px) {
+.carousel-item {
+flex: 0 0 50%; /* 每张图片占 50% 的宽度 */
+}
+}
+
+/* 小屏设备，每次显示 1 张 */
+@media (max-width: 768px) {
+.carousel-item {
+flex: 0 0 100%; /* 每张图片占 100% 的宽度 */
+}
+}
