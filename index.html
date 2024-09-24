@@ -77,6 +77,26 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Karma", sans-serif}
 .carousel-button:hover {
   background-color: rgba(0, 0, 0, 0.8);
 }
+
+@media (min-width: 1024px) {
+  .carousel-item {
+    flex: 0 0 25%; /* 每张图片占 25% 的宽度 */
+  }
+}
+
+/* 中等屏设备，每次显示 2 张 */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .carousel-item {
+    flex: 0 0 50%; /* 每张图片占 50% 的宽度 */
+  }
+}
+
+/* 小屏设备，每次显示 1 张 */
+@media (max-width: 767px) {
+  .carousel-item {
+    flex: 0 0 100%; /* 每张图片占 100% 的宽度 */
+  }
+}
 </style>
 </head>
 <body>
