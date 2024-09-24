@@ -35,3 +35,12 @@ a{
 .dby-link:hover{
   color:pink
 }
+
+.readmore{
+  font-size: 15px;
+  text-decoration: none;
+}
+
+.readmore:hover{
+  color:pink
+}
