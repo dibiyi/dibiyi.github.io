@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>dby's bar</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../css/main.css">
+<link rel="stylesheet" href="../css/minor.css">
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Karma", sans-serif}
+.w3-bar-block .w3-bar-item {padding:20px}
+</style>
+</head>
+<body>
+
+    <!-- Sidebar (hidden by default) -->
+    <nav class="w3-sidebar w3-bar-block w3-card w3-top w3-xlarge w3-animate-left" style="display:none;z-index:2;width:25%;min-width:200px" id="mySidebar">
+    <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button">☰</a>
+    <a href="../index.html" onclick="w3_close()" class="w3-bar-item w3-button">Home</a>
+    <a href="../index.html#Recipe" onclick="w3_close()" class="w3-bar-item w3-button">Recipe</a>
+    <a href="../index.html#Cocktails" onclick="w3_close()" class="w3-bar-item w3-button">Cocktails</a>
+    </nav>
+
+    <!-- Top menu -->
+    <div class="w3-top">
+    <div class="w3-white w3-xlarge" style="max-width:1200px;margin:auto">
+        <div class="w3-button w3-padding-16 w3-left" id="menuBtn">☰</div>
+        <div class="w3-right w3-padding-16">Mail</div>
+        <div class="w3-center w3-padding-16">My Food</div>
+    </div>
+    </div>
+
+</br>
+</br>
+</br>
+</br>
+    <div class="w3-main w3-content w3-padding">     
+        <h1><b>干锅鸡</b></h1>
+        
+        <h2><b>材料</b></h2>
+        <ul>
+            <li>鸡腿肉</li>
+            <li>洋葱</li>
+            <li>芹菜</li>
+            <li>土豆</li>
+            <li>盐</li>
+            <li>生抽</li>
+            <li>胡椒粉</li>
+            <li>白糖</li>
+            <li>白芝麻</li>
+            <li>孜然</li>
+            <li>火锅底料</li>
+            <li>辣椒粉</li>
+            <li>蚝油</li>
+            <li>黄豆酱</li>
+            <li>淀粉</li>
+            <li>料酒、姜粉</li>
+            <li>花椒粒、干辣椒段</li>
+        </ul>
+    </div>
+
+    <hr/>
+
+    <div class="w3-main w3-content w3-padding">  
+        <h2><b>做法</b></h2>
+        <ol>
+            <li>鸡腿肉切块，土豆切长条，芹菜切条，洋葱切丝</li>
+            <li>鸡腿肉腌制：加入一圈半生抽，一勺蚝油，料酒、姜粉、白胡椒粉，（黑胡椒可选），少量白糖，少量盐，孜然粉，淀粉，食用油</li>
+            <li>锅中油热，炸土豆和鸡腿肉</li>
+            <li>锅中留少量油，加入花椒粒，干辣椒段、火锅底料、黄豆酱炒香，加入洋葱芹菜炒香</li>
+            <li>加入土豆和鸡块，加糖、盐、生抽调味</li>
+            <li>撒上白芝麻翻炒出锅</li>
+        </ol>
+    </div>
+
+    <!--link and photo-->
+    <!--img src="../photo/tangcu-paigu.jpg"/-->
+
+    <script>
+        // 打开侧边栏
+        function w3_open() {
+            document.getElementById("mySidebar").style.display = "block";
+        }
+        
+        // 关闭侧边栏
+        function w3_close() {
+            document.getElementById("mySidebar").style.display = "none";
+        }
+        
+        // 防止点击菜单按钮时触发关闭事件
+        document.getElementById('menuBtn').addEventListener('click', function(event) {
+            event.stopPropagation(); // 阻止点击传播，防止菜单关闭
+            w3_open(); // 打开菜单
+        });
+        
+        // 检测点击事件，点击空白区域时关闭侧边栏
+        document.addEventListener('click', function(event) {
+            var sidebar = document.getElementById("mySidebar");
+            var menuBtn = document.getElementById("menuBtn");
+            // 如果侧边栏是打开的，且点击不在侧边栏和菜单按钮内部，则关闭侧边栏
+            if (sidebar.style.display === "block" && !sidebar.contains(event.target) && !menuBtn.contains(event.target)) {
+            w3_close();
+            }
+        });
+        
+        // 防止点击菜单栏内部时关闭
+        document.getElementById("mySidebar").addEventListener('click', function(event) {
+            event.stopPropagation(); // 阻止点击传播，防止菜单栏内点击触发关闭
+        });
+    </script>
+</body>
+</html>
