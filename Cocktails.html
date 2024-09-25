@@ -55,29 +55,35 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Karma", sans-serif}
 <hr>
 <div class="w3-main w3-content w3-padding w3-center" style="max-width:1200px;margin-top:100px">
 
-  <!-- First Photo Grid-->
-  <div class="w3-row-padding w3-padding-16 w3-center">
-    <div class="w3-quarter">
-      <img src="photo/white-lady.jpg" alt="White Lady" style="width:100%; aspect-ratio: 1 / 1;">
-      <a href="html/whitelady.html" class="dby-link"><h3>White lady</h3></a>
-      <p>Just some random text, lorem ipsum text praesent tincidunt ipsum lipsum.</p>
-    </div>
-    <div class="w3-quarter">
-      <img src="photo/gintonic.jpg" alt="Gin Tonic" style="width:100%; aspect-ratio: 1 / 1;">
-      <a href="html/Gintonic.html" class="dby-link"><h3>Gin Tonic</h3></a>
-      <p>Just some random text, lorem ipsum text praesent tincidunt ipsum lipsum.</p>
-    </div>  
-    <div class="w3-quarter">
-      <img src="photo/classic-martini.jpg" alt="Classic Martini" style="width:100%; aspect-ratio: 1 / 1;">
-      <a href="html/classicmartini.html" class="dby-link"><h3>Classic Martini</h3></a>
-      <p>Just some random text, lorem ipsum text praesent tincidunt ipsum lipsum.</p>
-    </div>
-    <div class="w3-quarter">
-      <img src="photo/manhattan.jpg" alt="Manhattan" style="width:100%; aspect-ratio: 1 / 1;">
-      <a href="html/manhattan.html" class="dby-link"><h3>Manhattan</h3></a>
-      <p>Just some random text, lorem ipsum text praesent tincidunt ipsum lipsum.</p>
-    </div>   
+<!-- Search Bar -->
+<div class="w3-center" style="padding: 20px 0;">
+  <input type="text" id="searchInput" onkeyup="searchCocktails()" placeholder="Search for cocktails..." style="width: 50%; padding: 12px; font-size: 16px;">
+</div>
+
+<!-- First Photo Grid-->
+<div class="w3-row-padding w3-padding-16 w3-center" id="cocktailGrid">
+  <div class="w3-quarter cocktail-item" data-keywords="white lady gin citrus cocktail">
+    <img src="photo/white-lady.jpg" alt="White Lady" style="width:100%; aspect-ratio: 1 / 1;">
+    <a href="html/whitelady.html" class="dby-link"><h3>White Lady</h3></a>
+    <p>A classic gin-based cocktail with citrus notes.</p>
   </div>
+  <div class="w3-quarter cocktail-item" data-keywords="gin tonic refreshing cocktail">
+    <img src="photo/gintonic.jpg" alt="Gin Tonic" style="width:100%; aspect-ratio: 1 / 1;">
+    <a href="html/Gintonic.html" class="dby-link"><h3>Gin Tonic</h3></a>
+    <p>The ultimate refreshing drink with gin and tonic water.</p>
+  </div>  
+  <div class="w3-quarter cocktail-item" data-keywords="classic martini gin vermouth cocktail">
+    <img src="photo/classic-martini.jpg" alt="Classic Martini" style="width:100%; aspect-ratio: 1 / 1;">
+    <a href="html/classicmartini.html" class="dby-link"><h3>Classic Martini</h3></a>
+    <p>A sophisticated gin and vermouth cocktail, served chilled.</p>
+  </div>
+  <div class="w3-quarter cocktail-item" data-keywords="manhattan whiskey vermouth cocktail">
+    <img src="photo/manhattan.jpg" alt="Manhattan" style="width:100%; aspect-ratio: 1 / 1;">
+    <a href="html/manhattan.html" class="dby-link"><h3>Manhattan</h3></a>
+    <p>A smooth mix of whiskey and vermouth with a touch of bitters.</p>
+  </div>   
+</div>
+
 
 </div>
 
@@ -112,6 +118,23 @@ document.addEventListener('click', function(event) {
 document.getElementById("mySidebar").addEventListener('click', function(event) {
     event.stopPropagation(); // 阻止点击传播，防止菜单栏内点击触发关闭
 });
+
+function searchCocktails() {
+  var input, filter, cocktailGrid, cocktailItems, keywords, i;
+  input = document.getElementById('searchInput'); // 获取搜索框的输入
+  filter = input.value.toLowerCase(); // 将输入转换为小写，确保不区分大小写
+  cocktailGrid = document.getElementById('cocktailGrid'); // 获取包含鸡尾酒的容器
+  cocktailItems = cocktailGrid.getElementsByClassName('cocktail-item'); // 获取所有鸡尾酒项
+
+  for (i = 0; i < cocktailItems.length; i++) {
+    keywords = cocktailItems[i].getAttribute('data-keywords'); // 获取每个鸡尾酒的关键词
+    if (keywords.toLowerCase().indexOf(filter) > -1) {
+      cocktailItems[i].style.display = ""; // 如果匹配，显示该项
+    } else {
+      cocktailItems[i].style.display = "none"; // 如果不匹配，隐藏该项
+    }
+  }
+}
 </script>
 
 </body>

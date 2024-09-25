@@ -49,35 +49,39 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Karma", sans-serif}
   </div>
 </div>
 
-
-  
 <!-- !PAGE CONTENT! -->
 <hr>
+
 <div class="w3-main w3-content w3-padding w3-center" style="max-width:1200px;margin-top:100px">
 
-  <!-- First Photo Grid-->
-  <div  class="w3-row-padding w3-padding-16">
-    <div class="w3-quarter">
-      <img src="photo/luobo.jpeg" alt="white-lady" style="width:100%; aspect-ratio: 1 / 1;">
-      <a href="html/luobodunniurou.html" class="dby-link"><h3>萝卜炖牛腩</h3></a>
-      <p>Just some random text, lorem ipsum text praesent tincidunt ipsum lipsum.</p>
-    </div>
-    <div class="w3-quarter">
-      <img src="photo/dapanji.jpg" alt="white-lady" style="width:100%; aspect-ratio: 1 / 1;">
-      <a href="html/dapanji.html" class="dby-link"><h3>大盘鸡</h3></a>
-      <p>Just some random text, lorem ipsum text praesent tincidunt ipsum lipsum.</p>
-    </div>
-    <div class="w3-quarter">
-      <img src="photo/tangcu.jpg" alt="white-lady" style="width:100%; aspect-ratio: 1 / 1;">
-      <a href="html/tangcupaigu.html" class="dby-link"><h3>糖醋排骨</h3></a>
-      <p>Just some random text, lorem ipsum text praesent tincidunt ipsum lipsum.</p>
-    </div>
-    <div class="w3-quarter">
-      <img src="photo/ganguoji.jpg" alt="white-lady" style="width:100%; aspect-ratio: 1 / 1;">
-      <a href="html/ganguoji.html" class="dby-link"><h3>干锅鸡</h3></a>
-      <p>Just some random text, lorem ipsum text praesent tincidunt ipsum lipsum.</p>
-    </div>
+<!-- Search Bar -->
+<div class="w3-center" style="padding: 20px 0;">
+  <input type="text" id="searchInput" onkeyup="searchRecipes()" placeholder="Search for recipes..." style="width: 50%; padding: 12px; font-size: 16px;">
+</div>
+
+<!-- First Photo Grid -->
+<div class="w3-row-padding w3-padding-16" id="recipeGrid">
+  <div class="w3-quarter recipe-item" data-keywords="萝卜炖牛腩 牛肉 炖菜">
+    <img src="photo/luobo.jpeg" alt="white-lady" style="width:100%; aspect-ratio: 1 / 1;">
+    <a href="html/luobodunniurou.html" class="dby-link"><h3>萝卜炖牛腩</h3></a>
+    <p>Just some random text, lorem ipsum text praesent tincidunt ipsum lipsum.</p>
   </div>
+  <div class="w3-quarter recipe-item" data-keywords="大盘鸡 鸡肉 辣">
+    <img src="photo/dapanji.jpg" alt="white-lady" style="width:100%; aspect-ratio: 1 / 1;">
+    <a href="html/dapanji.html" class="dby-link"><h3>大盘鸡</h3></a>
+    <p>Just some random text, lorem ipsum text praesent tincidunt ipsum lipsum.</p>
+  </div>
+  <div class="w3-quarter recipe-item" data-keywords="糖醋排骨 排骨 甜酸">
+    <img src="photo/tangcu.jpg" alt="white-lady" style="width:100%; aspect-ratio: 1 / 1;">
+    <a href="html/tangcupaigu.html" class="dby-link"><h3>糖醋排骨</h3></a>
+    <p>Just some random text, lorem ipsum text praesent tincidunt ipsum lipsum.</p>
+  </div>
+  <div class="w3-quarter recipe-item" data-keywords="干锅鸡 干锅 鸡肉">
+    <img src="photo/ganguoji.jpg" alt="white-lady" style="width:100%; aspect-ratio: 1 / 1;">
+    <a href="html/ganguoji.html" class="dby-link"><h3>干锅鸡</h3></a>
+    <p>Just some random text, lorem ipsum text praesent tincidunt ipsum lipsum.</p>
+  </div>
+</div>
 
 </div>
 
@@ -112,6 +116,24 @@ document.addEventListener('click', function(event) {
 document.getElementById("mySidebar").addEventListener('click', function(event) {
     event.stopPropagation(); // 阻止点击传播，防止菜单栏内点击触发关闭
 });
+
+
+function searchRecipes() {
+  var input, filter, recipeGrid, recipeItems, keywords, i;
+  input = document.getElementById('searchInput');
+  filter = input.value.toLowerCase();
+  recipeGrid = document.getElementById('recipeGrid');
+  recipeItems = recipeGrid.getElementsByClassName('recipe-item');
+
+  for (i = 0; i < recipeItems.length; i++) {
+    keywords = recipeItems[i].getAttribute('data-keywords');
+    if (keywords.toLowerCase().indexOf(filter) > -1) {
+      recipeItems[i].style.display = "";
+    } else {
+      recipeItems[i].style.display = "none";
+    }
+  }
+}
 </script>
 
 </body>
