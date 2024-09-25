@@ -6,6 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="css/main.css">
 <link rel="stylesheet" href="css/minor.css">
+<link rel="icon" href="photo/logo.png" type="image/png">
 <style>
 body,h1,h2,h3,h4,h5,h6 {font-family: "Karma", sans-serif}
 .w3-bar-block .w3-bar-item {padding:20px}
@@ -57,7 +58,8 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Karma", sans-serif}
 
 <!-- Search Bar -->
 <div class="w3-center" style="padding: 20px 0;">
-  <input type="text" id="searchInput" onkeyup="searchCocktails()" placeholder="Search for cocktails..." style="width: 50%; padding: 12px; font-size: 16px;">
+  <input type="text" id="searchInput" placeholder="Search for recipes..." style="width: 50%; padding: 12px; font-size: 16px;" onkeypress="if(event.key === 'Enter') { searchCocktails(); }">
+  <button onclick="searchCocktails()" style="padding: 12px; font-size: 16px;">Search</button>
 </div>
 
 <!-- First Photo Grid-->
